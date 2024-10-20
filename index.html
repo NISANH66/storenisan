@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חנות היהלומים ניסן הקנין</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1 class="site-title">NISAN DIMOND IND' </h1>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#checkout-btn">רכישה</a></li>
+                <li><a href="#cart">עגלה</a></li>
+                <li><a href="#products">מוצרים</a></li>
+                <li><a href="#about-me">ראשי</a></li>
+                <li><a href="#cart" onclick="showCart()">סל קניות</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-me">
+
+        <h2>חנות היהלומים ניסן הקנין</h2>
+        <p>חנות היהלומים "ניסן הקנין" פועלת מאז שנת 2010, והיא אחת מהחנויות המובילות בתחום התכשיטים בישראל. החנות ממוקמת
+            בכיכר המדינה בתל אביב, מקום פופולרי ואופנתי, שבו מתהדרים הלקוחות בתכשיטים ייחודיים ואיכותיים.
+        </p>
+        ניסן הקנין מתמחה בייצור תכשיטים ייחודיים שעשויים מיהלומים איכותיים. כל תכשיט נוצר באהבה ובמחשבה רבה, תוך
+        שמירה על רמת גימור גבוהה וסטנדרטים מחמירים של איכות. בזכות המומחיות והיצירתיות של הצוות, הלקוחות יכולים
+        למצוא תכשיטים שמתאימים לכל סגנון אישי.
+        </p>
+        החנות זוכה להוקרה רבה, ולקוחותיה כוללים את המי ומי של החברה. כל מי
+        שמחפש תכשיט יפה, ייחודי ומקצועי, יודע שניתן למצוא את זה בחנות ניסן הקנין. אם אתם רוצים תכשיט שישאיר רושם,
+        כדאי לבקר ולגלות את הקולקציות המרהיבות שהחנות מציעה.
+        </p>
+        <img src="shop2.webp" alt="about-me">
+        (תמונה מיוצרת על ידי בינה מלאכותית)
+        <img src="shop1.webp" alt="about-me">
+
+        <div class="products">
+            <div class="product">
+                <img src="earing.jpg" alt="Product 1 Image">
+                <h2>עגילי יהלום 1 קארט</h2>
+                <p>$1000.00</p>
+                <button onclick="addToCart('עגילי יהלום 1 קארט', 1000)">אוסף לסל</button>
+            </div>
+            <div class="product">
+                <img src="ringoval.jpg" alt="Product 2 Image">
+                <h2>טבעת יהלום אובלי 2.10 קארט</h2>
+                <p>$15000.00</p>
+                <button onclick="addToCart('טבעת יהלום אובלי 2.10 קארט', 15000)">אוסף לסל</button>
+            </div>
+            <div class="product">
+                <img src="star of daivd.webp" alt="Product 3 Image">
+                <h2>שרשת זהב עם תליון מגן דוד יהלומי מעבדה</h2>
+                <p>$600.00</p>
+                <button onclick="addToCart('שרשת זהב עם תליון מגן דוד יהלומי מעבדה', 600)">אוסף לסל</button>
+            </div>
+            <div class="product">
+                <img src="neackles_dim.webp" alt="Product 4 Image">
+                <h2>שרשת לאישה יהלום מרכזי 1.20 קארט</h2>
+                <p>$1200.00</p>
+                <button onclick="addToCart('שרשת לאישה יהלום מרכזי 1.20 קארט', 1200)">אוסף לסל</button>
+            </div>
+            <div class="product">
+                <img src="manring.jpg" alt="Product 5 Image">
+                <h2>טבעת זהב לגבר עם חריטה</h2>
+                <p>$100.00</p>
+                <button onclick="addToCart('טבעת זהב לגבר עם חריטה', 100)">אוסף לסל</button>
+            </div>
+            <div class="product">
+                <img src="bracelatdimownd.jpg" alt="Product 6 Image">
+                <h2>צמיד טניס יהלומים 2 קארט</h2>
+                <p>$2000.00</p>
+                <button onclick="addToCart('צמיד טניס יהלומים 2 קארט', 2000)">אוסף לסל</button>
+            </div>
+        </div>
+
+        <h2>סל קניות</h2>
+        <table id="cart" class="cart-table">
+            <thead>
+                <tr>
+                    <th>מוצרים</th>
+                    <th>כמות</th>
+                    <th>מחיר</th>
+                    <th>הסר</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">סל ריק</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p id="total-price">מחיר מצטבר: $0.00</p>
+        <button id="checkout-btn" onclick="showCheckout()">רכישה</button>
+        <button id="clear-cart" onclick="clearCart()">ביטול סל</button>
+
+        <div id="checkout-form" class="hidden">
+            <h2>רכישת מוצרים</h2>
+            <form onsubmit="handleCheckout(event)">
+                <input type="text" id="name" placeholder="שמך" required><br>
+                <input type="text" id="address" placeholder="כתובת משלוח" required><br>
+                <input type="email" id="email" placeholder="כתובת מייל" required><br>
+                <button type="submit">בצע רכישה</button>
+            </form>
+            <button onclick="hideCheckout()">ביטול</button>
+        </div>
+
+        <script src="script.js"></script>
+
+
+</body>
+
+</html>
+
+
+
+<script src="script.js"></script>
+
+
+<footer>
+    <p>&copy; 2024 ניסן הקנין. קרדיט לתמונות הלקוחות מהגוגל. כל הזכויות שמורות</p>
+</footer>
+</body>
+
+</html>
